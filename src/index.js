@@ -20,17 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-/**
- * Get the current version of https://arnavthorat78.github.io/Google-Home/.
- */
-export const currentWebsiteVersion: string;
-/**
- * Gets the current version of the Google Home Module.
- */
-export const currentVersion: string;
-/**
- * Returns all versions in the form of an array.
- *
- * @returns All of the versions if found, else undefined.
- */
-export const returnVersions: () => string | undefined[];
+const currentWebsiteVersion = "2.0.0";
+const currentVersion = "1.2.0";
+const returnVersions = () => {
+	return [currentWebsiteVersion, currentVersion];
+};
+
+module.exports = { currentWebsiteVersion, currentVersion, returnVersions };

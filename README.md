@@ -1,23 +1,24 @@
-# Google-Home-Module
+# Google Home Module
 
-![npm (scoped)](https://img.shields.io/npm/v/@arnavcoder/google-home-module?color=red&label=npm&logo=v1.0.0&logoColor=grey)
-
+![npm](https://img.shields.io/npm/v/google-home-module)
 This module includes everything of Google Home!
 
 ## Website URL
 
 See the website at https://arnavthorat78.github.io/Google-Home/.
 
-## Install
+## Installation
 
 ```
-$ npm install @arnavcoder/google-home-module
+$ npm install google-home-module
 ```
+
+It's that easy!
 
 ## Usage
 
 ```js
-const googleHome = require("@arnavcoder/google-home-module");
+const googleHome = require("google-home-module");
 
-console.log(googleHome);
+// We're still adding features... be patient!
 ```

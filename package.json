@@ -1,4 +1,14 @@
 {
 	"name": "@arnavcoder/google-home-module",
-	"version": "1.0.0"
+	"version": "1.0.0",
+	"description": "Let's you complete tasks that Google Home can do.",
+	"license": "MIT",
+	"repository": "arnavthorat78/Google-Home-Module",
+	"main": "index.js",
+	"keywords": [
+		"google",
+		"npm",
+		"package",
+		"arnavcoder"
+	]
 }

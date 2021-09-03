@@ -1,6 +1,7 @@
 # Google Home Module
 
-![npm](https://img.shields.io/npm/v/google-home-module)
+![npm](https://img.shields.io/npm/v/google-home-module?color=red&label=npm&logo=version&logoColor=grey)
+
 This module includes everything of Google Home!
 
 ## Website URL

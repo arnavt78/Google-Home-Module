@@ -19,5 +19,5 @@ $ npm install @arnavcoder/google-home-module
 ```js
 const googleHome = require("@arnavcoder/google-home-module");
 
-console.log(googleHome.version);
+console.log(googleHome);
 ```

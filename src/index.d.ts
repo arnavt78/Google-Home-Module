@@ -21,6 +21,11 @@
 // SOFTWARE.
 
 /**
+ * The target of a URL. Does not support _iframes_.
+ */
+type URLTarget = "_blank" | "_self" | "_parent" | "_top";
+
+/**
  * Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.
  *
  * This is right now a static variable, which may not be accurate. We are hoping to make a dynamic variable (or function) soon.
@@ -66,3 +71,34 @@ export const version: string;
  * @returns The greeting produced randomly.
  */
 export const randomGreeting: (signedIn: boolean, username: string = "") => string;
+
+/**
+ * Creates a new BasicSearch.
+ */
+export class BasicSearch {
+	/**
+	 * Make a new BasicSearch.
+	 *
+	 * @param query The query that the user has (what they want to search for).
+	 * @param searchEngine The search engine that the user uses. The default is Google.
+	 */
+	constructor(readonly query: string, readonly searchEngine: string = "Google") {}
+	/**
+	 * Format the query of the user.
+	 *
+	 * @param username The username of the user. If you leave this blank, the value will be defaulted to _Anonymous_.
+	 * @returns The formatted string.
+	 */
+	formatQuery(username: string = "Anonymous"): string;
+	/**
+	 * Search for user's query with the search engine and the user's query.
+	 *
+	 * This method does not actually search, but we are hoping to implement that feature soon.
+	 *
+	 * This method does not guarentee that the search will actually be successful.
+	 *
+	 * @param target The target of the URL. Can be only __blank_, __self_, __parent_ or __top_.
+	 * @returns The object consisting the url and the target.
+	 */
+	search(target: URLTarget): { url: string; target: URLTarget };
+}

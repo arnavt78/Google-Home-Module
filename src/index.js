@@ -65,4 +65,32 @@ const randomGreeting = (signedIn, username = "") => {
 	}
 };
 
-module.exports = { websiteVersion, version, randomGreeting };
+class BasicSearch {
+	constructor(query, searchEngine = "Google") {
+		this.query = query;
+		this.searchEngine = searchEngine;
+	}
+	formatQuery(username = "Anonymous") {
+		return `${username} has searched for '${this.query}' using ${this.searchEngine}.`;
+	}
+	search(target) {
+		if (this.searchEngine == "Bing") {
+			return {
+				url: `https://www.bing.com/search?q=${encodeURIComponent(this.query)}`,
+				target,
+			};
+		} else if (this.searchEngine == "DuckDuckGo") {
+			return {
+				url: `https://duckduckgo.com/?q=${encodeURIComponent(this.query)}`,
+				target,
+			};
+		} else {
+			return {
+				url: `https://www.google.com/search?q=${encodeURIComponent(this.query)}`,
+				target,
+			};
+		}
+	}
+}
+
+module.exports = { websiteVersion, version, randomGreeting, BasicSearch };

@@ -21,15 +21,6 @@
 // SOFTWARE.
 
 /**
- * The target of a URL. Does not support _iframes_.
- */
-type URLTarget = "_blank" | "_self" | "_parent" | "_top";
-/**
- * Instead of `true` and `false`, use _yes_ and _no_.
- */
-type otherBool = "yes" | "no";
-
-/**
  * Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.
  *
  * This is right now a static variable, which may not be accurate. We are hoping to make a dynamic variable (or function) soon.
@@ -104,7 +95,7 @@ export class BasicSearch {
 	 * @param target The target of the URL. Can be only __blank_, __self_, __parent_ or __top_.
 	 * @returns The object consisting the url and the target.
 	 */
-	search(target: URLTarget): { url: string; target: URLTarget };
+	search(target: string): { url: string; target: string };
 }
 
 /**
@@ -130,9 +121,9 @@ export class User {
 		readonly signedOut?: boolean
 	) {}
 	/**
-	 * Validate the email that the user has.
+	 * Validate the email that the user has. This cannot be customized, but we are hoping to implement it soon.
 	 *
-	 * Uses a RegEx pattern to test the email to see if it passes.
+	 * Uses a RegExp pattern to test the email to see if it passes.
 	 * This pattern is guarenteed to work 99.99% of the time (since no email RegEx is perfect)! Credits for this go to [this website](https://emailregex.com/).
 	 *
 	 * ```js
@@ -158,10 +149,58 @@ export class User {
 	 */
 	getEmailDomain(name?: boolean): string[];
 	/**
+	 * Test the users' password using your own custom fields.
+	 *
+	 * @param minCharacters The number of minimum characters the password should contain. The default is 5.
+	 * @param nonContaining An array of strings showing what the password should not **be**. If this array contains any elements other than strings, a `TypeError` exception will be thrown.
+	 * @returns A boolean, indicating whether or not the password passed the test.
+	 */
+	validatePassword(minCharacters?: number, nonContaining?: string[]): boolean;
+	/**
+	 * Change the user's password. This takes in the current password so the password can be changed securely, and the new password thay the user would like to change to.
+	 *
+	 * This returns an object containing whether or not the password was changed, the new password (can be the current one if an error occured), and the message for changing.
+	 * For security reasons, **do not** use the `newPassword` key for unstable uses. Use it properly, and if possible, don't use it at all.
+	 *
+	 * ```js
+	 * const googleHome = require("google-home-module");
+	 *
+	 * const user = new googleHome.User("Someome", "someone@gmail.com", "test1234", true, false, false);
+	 * user.changePassword("test12345", "testing123");
+	 * // => { changed: false, newPassword: "test1234", message: "Could not change password due to the current password passed not matching with the actual current password." }
+	 * user.changePassword("test1234", "test1234");
+	 * // => { changed: false, newPassword: "test1234", message: "Could not change password due to the current password having the same value as the new password." }
+	 * user.changePassword("test1234", "testing123");
+	 * // => { changed: true, newPassword: "testing123", message: "Successfully changed the password!" }
+	 * ```
+	 *
+	 * @param currentPassword The current password of the user. This must be correct, otherwise the function will return without changing the password.
+	 * @param newPassword The new password that the user wants to change to. This must not equal to the current password, otherwise the password won't be changed.
+	 * @returns An object containing three key values: `changed`, which is a boolean of whether or not the password was successfully changed, `newPassword`, which contains the new password, and `message`, which shows the message result of changing the password.
+	 */
+	changePassword(
+		currentPassword: string,
+		newPassword: string
+	): { changed: boolean; newPassword: string; message: string };
+	/**
 	 * Toggle the exists status. Leaves it the same if the passed value is already the same.
 	 *
 	 * @param value What to change the value to. Either _yes_ or _no_.
 	 * @returns The new value for `exists`.
 	 */
-	toggleExistsStatus(value: otherBool): boolean;
+	toggleExistsStatus(value: string): boolean;
+	/**
+	 * Toggle the admin status. Leaves it the same if the passed value is already the same.
+	 *
+	 * @param value What to change the value to. Either _yes_ or _no_.
+	 * @returns The new value for `admin`.
+	 */
+	toggleAdminStatus(value: string): boolean;
+	/**
+	 * Toggle the signed out status. Leaves it the same if the passed value is already the same.
+	 *
+	 * @param value What to change the value to. Either _yes_ or _no_.
+	 * @returns The new value for `signedOut`.
+	 */
+	toggleSignedOutStatus(value: string): boolean;
 }

@@ -124,9 +124,61 @@ class User {
 		}
 	}
 
+	validatePassword(minCharacters = 5, nonContaining = ["password"]) {
+		const properPasswordLength = this.password.length + 1;
+
+		nonContaining.forEach((value, index) => {
+			if (typeof value != "string") {
+				throw new TypeError(
+					`Array 'nonContaining' must only contain strings. Expected array containing strings, but got ${value} at index ${index}.`
+				);
+			}
+		});
+
+		if (properPasswordLength < minCharacters) {
+			return false;
+		} else if (nonContaining.includes(this.password)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	changePassword(currentPassword, newPassword) {
+		if (currentPassword != this.password) {
+			return {
+				changed: false,
+				newPassword: this.password,
+				message:
+					"Could not change password due to the current password passed not matching with the actual current password.",
+			};
+		} else if (currentPassword == newPassword) {
+			return {
+				changed: false,
+				newPassword: this.password,
+				message:
+					"Could not change password due to the current password having the same value as the new password.",
+			};
+		} else {
+			this.password = newPassword;
+			return {
+				changed: true,
+				newPassword: this.password,
+				message: "Successfully changed the password!",
+			};
+		}
+	}
+
 	toggleExistsStatus(value) {
 		this.exists = value == "yes" ? true : false;
 		return this.exists;
+	}
+	toggleAdminStatus(value) {
+		this.admin = value == "yes" ? true : false;
+		return this.admin;
+	}
+	toggleSignedOutStatus(value) {
+		this.signedOut = value == "yes" ? true : false;
+		return this.signedOut;
 	}
 }
 

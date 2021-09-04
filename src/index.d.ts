@@ -24,6 +24,10 @@
  * The target of a URL. Does not support _iframes_.
  */
 type URLTarget = "_blank" | "_self" | "_parent" | "_top";
+/**
+ * Instead of `true` and `false`, use _yes_ and _no_.
+ */
+type otherBool = "yes" | "no";
 
 /**
  * Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.
@@ -153,4 +157,11 @@ export class User {
 	 * @returns The array containing the name (if requested) and the domain.
 	 */
 	getEmailDomain(name?: boolean): string[];
+	/**
+	 * Toggle the exists status. Leaves it the same if the passed value is already the same.
+	 *
+	 * @param value What to change the value to. Either _yes_ or _no_.
+	 * @returns The new value for `exists`.
+	 */
+	toggleExistsStatus(value: otherBool): boolean;
 }

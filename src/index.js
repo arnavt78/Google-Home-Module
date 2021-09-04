@@ -123,6 +123,11 @@ class User {
 			return [emailSep[1]];
 		}
 	}
+
+	toggleExistsStatus(value) {
+		this.exists = value == "yes" ? true : false;
+		return this.exists;
+	}
 }
 
 module.exports = { websiteVersion, version, randomGreeting, BasicSearch, User };

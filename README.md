@@ -33,9 +33,10 @@ console.log(search.search("_blank"));
 
 ## Commands
 
-| Commands                                                           | Description                                                                                               |
-| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| `websiteVersion: string`                                           | Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.       |
-| `version: string`                                                  | Get the version of the [Google Home Module](https://www.npmjs.com/package/google-home-module) NPM module. |
-| `randomGreeting: (signedIn: boolean, username?: string) => string` | Get a random greeting for the user.                                                                       |
-| `BasicSearch(query: string, searchEngine?: string): BasicSearch`   | Make a new _BasicSearch_ so the user can search with their desired search engine.                         |
+| Commands                                                                                                                   | Description                                                                                               |
+| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `websiteVersion: string`                                                                                                   | Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.       |
+| `version: string`                                                                                                          | Get the version of the [Google Home Module](https://www.npmjs.com/package/google-home-module) NPM module. |
+| `randomGreeting: (signedIn: boolean, username?: string) => string`                                                         | Get a random greeting for the user.                                                                       |
+| `BasicSearch(query: string, searchEngine?: string): BasicSearch`                                                           | Make a new _BasicSearch_ so the user can search with their desired search engine.                         |
+| `User(displayName: string, email: string, password: string, exists?: boolean, admin?: boolean, signedOut?: boolean): User` | Make a new _User_ for a user's account.                                                                   |

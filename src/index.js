@@ -93,4 +93,36 @@ class BasicSearch {
 	}
 }
 
-module.exports = { websiteVersion, version, randomGreeting, BasicSearch };
+class User {
+	constructor(displayName, email, password, exists = true, admin = false, signedOut = false) {
+		this.displayName = displayName;
+		this.email = email;
+		this.password = password; // This is encrypted and only going to be allowed to be shown in special situations
+		this.exists = exists;
+		this.admin = admin;
+		this.signedOut = signedOut;
+	}
+
+	validateEmail() {
+		const validation =
+			/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		return validation.test(this.email);
+	}
+	getEmailDomain(name = false) {
+		if (!this.email.includes("@")) {
+			throw new TypeError(
+				`Email does not contain '@' symbol. Expected email containing '@' symbol, but got ${this.email} instead. To validate email, use the validateEmail() method.`
+			);
+		}
+
+		const emailSep = this.email.split("@");
+		if (name) {
+			return [emailSep[0], emailSep[1]];
+		} else {
+			return [emailSep[1]];
+		}
+	}
+}
+
+module.exports = { websiteVersion, version, randomGreeting, BasicSearch, User };

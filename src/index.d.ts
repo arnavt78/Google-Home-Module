@@ -70,7 +70,7 @@ export const version: string;
  * @param {string} username The username of the user. If the user does not have an account, you do not have to fill this parameter.
  * @returns The greeting produced randomly.
  */
-export const randomGreeting: (signedIn: boolean, username: string = "") => string;
+export const randomGreeting: (signedIn: boolean, username?: string) => string;
 
 /**
  * Creates a new BasicSearch.
@@ -82,14 +82,14 @@ export class BasicSearch {
 	 * @param query The query that the user has (what they want to search for).
 	 * @param searchEngine The search engine that the user uses. The default is Google.
 	 */
-	constructor(readonly query: string, readonly searchEngine: string = "Google") {}
+	constructor(readonly query: string, readonly searchEngine?: string) {}
 	/**
 	 * Format the query of the user.
 	 *
 	 * @param username The username of the user. If you leave this blank, the value will be defaulted to _Anonymous_.
 	 * @returns The formatted string.
 	 */
-	formatQuery(username: string = "Anonymous"): string;
+	formatQuery(username?: string): string;
 	/**
 	 * Search for user's query with the search engine and the user's query.
 	 *
@@ -101,4 +101,56 @@ export class BasicSearch {
 	 * @returns The object consisting the url and the target.
 	 */
 	search(target: URLTarget): { url: string; target: URLTarget };
+}
+
+/**
+ * Create a new User.
+ */
+export class User {
+	/**
+	 * Creates a new User, in which the user can use to personalise their experience.
+	 *
+	 * @param displayName The display name for the user.
+	 * @param email The email of the user.
+	 * @param password The password of the user. This is encrypted and only going to be allowed to be shown in special situations.
+	 * @param exists If the user exists on the database. Defaults to true.
+	 * @param admin If the user is an administrator. Defaults to false.
+	 * @param signedOut If the user has signed out of their account. Defaults to false.
+	 */
+	constructor(
+		public displayName: string,
+		readonly email: string,
+		private password: string,
+		readonly exists?: boolean,
+		readonly admin?: boolean,
+		readonly signedOut?: boolean
+	) {}
+	/**
+	 * Validate the email that the user has.
+	 *
+	 * Uses a RegEx pattern to test the email to see if it passes.
+	 * This pattern is guarenteed to work 99.99% of the time (since no email RegEx is perfect)! Credits for this go to [this website](https://emailregex.com/).
+	 *
+	 * ```js
+	 * const googleHome = require("google-home-module");
+	 *
+	 * const userOne = new googleHome.User("Someome", "someone@gmail.c", "test1234", true, false, false);
+	 * const userTwo = new googleHome.User("SomeomeElse", "someoneelse@gmail.com", "test12345", true, false, false);
+	 *
+	 * userOne.validateEmail();
+	 * // => false
+	 * userTwo.validateEmail();
+	 * // => true
+	 * ```
+	 *
+	 * @returns The result of the validation (false if failed, else true).
+	 */
+	validateEmail(): boolean;
+	/**
+	 * Get the domain of the email. Returns an array containing the name of the email (if requested in the parameter), and the domain of the email.
+	 *
+	 * @param name If the name should be returned. Defaults to false.
+	 * @returns The array containing the name (if requested) and the domain.
+	 */
+	getEmailDomain(name?: boolean): string[];
 }

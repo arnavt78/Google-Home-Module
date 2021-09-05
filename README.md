@@ -29,6 +29,8 @@ console.log(search.formatQuery("Someone"));
 // =>  Someone has searched for 'JavaScript' using Google.
 console.log(search.search("_blank"));
 // =>  { url: "..."; target: "_blank" }
+
+const me = new User("Someone", "someone@gmail.com", "mypassword", true, false, false);
 ```
 
 ## Commands

@@ -176,9 +176,26 @@ class User {
 		this.admin = value == "yes" ? true : false;
 		return this.admin;
 	}
-	toggleSignedOutStatus(value) {
-		this.signedOut = value == "yes" ? true : false;
-		return this.signedOut;
+	toggleSignedOutStatus(value, email = null, password = null) {
+		if ((value == "no" && !email) || !password) {
+			throw new TypeError(
+				`Expected email and password while signing in. Expected email and password, but got ${email} and ${password}.`
+			);
+		} else if (value == "no") {
+			if (this.email != email || this.password != password) {
+				return {
+					action: "Sign In",
+					succeded: false,
+					message: "Could not sign in due to email or password not matching.",
+				};
+			} else {
+				this.signedOut = false;
+				return { action: "Sign In", succeded: true, message: "Signed in successfully!" };
+			}
+		} else {
+			this.signedOut = true;
+			return { action: "Sign Out", succeded: true, message: "Signed out successfully!" };
+		}
 	}
 }
 

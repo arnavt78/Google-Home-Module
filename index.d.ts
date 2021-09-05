@@ -197,10 +197,18 @@ export class User {
 	 */
 	toggleAdminStatus(value: string): boolean;
 	/**
-	 * Toggle the signed out status. Leaves it the same if the passed value is already the same.
+	 * Toggle the signed out status.
+	 *
+	 * If `value` is no, you must pass in the email and the password. Otherwise, an error will be thrown. If you are signing out, then you can leave these fields empty.
 	 *
 	 * @param value What to change the value to. Either _yes_ or _no_.
-	 * @returns The new value for `signedOut`.
+	 * @param email The email of the user.
+	 * @param password The password of the user.
+	 * @returns An object containing the information of the action, whether or not it succeded, and the message.
 	 */
-	toggleSignedOutStatus(value: string): boolean;
+	toggleSignedOutStatus(
+		value: string,
+		email?: string,
+		password?: string
+	): { action: string; succeded: boolean; message: string };
 }

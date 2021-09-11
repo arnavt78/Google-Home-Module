@@ -95,6 +95,20 @@ const getWeather = async (units, city, stateCode = "", countryCode = "") => {
 	).data;
 };
 
+const changeWeatherData = (icon, sunrise, sunset) => {
+	const newIcon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+	const newDayNight = icon.includes("d") ? "day" : "night";
+	const newSunrise = new Date(sunrise * 1000).toLocaleString();
+	const newSunset = new Date(sunset * 1000).toLocaleString();
+
+	return {
+		icon: newIcon,
+		dayNight: newDayNight,
+		sunrise: newSunrise,
+		sunset: newSunset,
+	};
+};
+
 class BasicSearch {
 	constructor(query, searchEngine = "Google") {
 		this.query = query;
@@ -229,4 +243,12 @@ class User {
 	}
 }
 
-module.exports = { websiteVersion, version, randomGreeting, getWeather, BasicSearch, User };
+module.exports = {
+	websiteVersion,
+	version,
+	randomGreeting,
+	getWeather,
+	changeWeatherData,
+	BasicSearch,
+	User,
+};

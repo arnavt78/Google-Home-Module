@@ -111,6 +111,27 @@ export const getWeather: (
 ) => Promise<object>;
 
 /**
+ * Change the icon to a URL for the picture, see if the location is day or night, and get the Locale string for sunrise and sunset instead of Epoch time.
+ *
+ * This method is meant to be used with the `getWeather` method.
+ *
+ * @param icon The icon of the weather. This is used for the URL and for infering the day/night status.
+ * @param sunrise The sunrise of the location in Epoch time.
+ * @param sunset The sunset of the location in Epoch time.
+ * @returns The object of the new items.
+ */
+export const changeWeatherData: (
+	icon: string,
+	sunrise: number,
+	sunset: number
+) => {
+	icon: string;
+	dayNight: string;
+	sunrise: string;
+	sunset: string;
+};
+
+/**
  * Creates a new BasicSearch.
  */
 export class BasicSearch {

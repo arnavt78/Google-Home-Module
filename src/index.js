@@ -20,14 +20,128 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// Importing modules
 const axios = require("axios").default;
 const apiImport = require("../.private/api");
 
 const weatherApi = apiImport.weatherApi;
 
-const websiteVersion = "2.0.0";
-const version = "1.0.0";
+const websiteVersion = "2.1.0";
+const version = "1.1.0";
+
+const keyboardShortcuts = {
+	openHome: {
+		definition: "Open up the Home page.",
+		shortcut: "Ctrl + Alt + H",
+		allCharacters: ["Ctrl", "Alt", "H"],
+		isRedirect: true,
+		isTask: false,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	openSearch: {
+		definition: "Open up the Search page.",
+		shortcut: "Ctrl + Alt + S",
+		allCharacters: ["Ctrl", "Alt", "S"],
+		isRedirect: true,
+		isTask: false,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	openWeather: {
+		definition: "Open up the Weather page.",
+		shortcut: "Ctrl + Alt + W",
+		allCharacters: ["Ctrl", "Alt", "W"],
+		isRedirect: true,
+		isTask: false,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	openSettings: {
+		definition: "Open up the Settings page.",
+		shortcut: "Ctrl + Alt + G",
+		allCharacters: ["Ctrl", "Alt", "G"],
+		isRedirect: true,
+		isTask: false,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	openFeedback: {
+		definition: "Open up the Feedback page.",
+		shortcut: "Ctrl + Alt + F",
+		allCharacters: ["Ctrl", "Alt", "F"],
+		isRedirect: true,
+		isTask: false,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+
+	goToTop: {
+		definition:
+			"Naviagte to the top of the current page. This feature will not do anything if you are already at the top.",
+		shortcut: "Ctrl + Alt + T",
+		allCharacters: ["Ctrl", "Alt", "T"],
+		isRedirect: false,
+		isTask: true,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	goToBottom: {
+		definition:
+			"Naviagte to the bottom of the current page. This feature will not do anything if you are already at the bottom.",
+		shortcut: "Ctrl + Alt + B",
+		allCharacters: ["Ctrl", "Alt", "B"],
+		isRedirect: false,
+		isTask: true,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	goToMiddle: {
+		definition: "Naviagte to the middle of the current page.",
+		shortcut: "Ctrl + Alt + M",
+		allCharacters: ["Ctrl", "Alt", "M"],
+		isRedirect: false,
+		isTask: true,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+	closeWindow: {
+		definition:
+			"Close the current window. This is only for pop-up windows, such as the Keyboard Shortcuts page.",
+		shortcut: "Ctrl + Alt + C",
+		allCharacters: ["Ctrl", "Alt", "C"],
+		isRedirect: false,
+		isTask: true,
+		containsCtrl: true,
+		containsAlt: true,
+		containsShift: false,
+		containsLetter: true,
+		containsNumber: false,
+	},
+};
 
 const randomGreeting = (signedIn, username = "") => {
 	if (signedIn && !username) {
@@ -147,6 +261,17 @@ class User {
 		this.signedOut = signedOut;
 	}
 
+	changeDisplayName(newName) {
+		if (!newName || typeof newName != "string") {
+			throw new TypeError(
+				`Parameter 'newName' must have a value, and/or must have a value of 'string'. Expected truthy value and/or string value, but got '${newName}'.`
+			);
+		}
+
+		this.displayName = newName;
+		return this.displayName;
+	}
+
 	validateEmail() {
 		const validation =
 			/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -246,6 +371,7 @@ class User {
 module.exports = {
 	websiteVersion,
 	version,
+	keyboardShortcuts,
 	randomGreeting,
 	getWeather,
 	changeWeatherData,

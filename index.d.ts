@@ -38,6 +38,219 @@ export const websiteVersion: string;
 export const version: string;
 
 /**
+ * Get an object of objects containing the keyboard shortcuts of the website, and its information.
+ */
+export const keyboardShortcuts: {
+	/** The keyboard shortcut for opening the Home page. */
+	openHome: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for opening the Search page. */
+	openSearch: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for opening the Weather page. */
+	openWeather: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for opening the Settings page. */
+	openSettings: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for opening the Feedback page. */
+	openFeedback: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for navigating to the top of the current page. */
+	goToTop: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for navigating to the bottom of the current page. */
+	goToBottom: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for navigating to the middle of the current page. */
+	goToMiddle: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+	/** The keyboard shortcut for navigating to the centre of the current page. */
+	goToCentre: {
+		/** The definition of what the shortcut does. */
+		definition: string;
+		/** The shortcut (the letters are seperated by '+'). */
+		shortcut: string;
+		/** All of the characters in an array of strings. */
+		allCharacters: string[];
+		/** If the shortcut is a redirect. */
+		isRedirect: boolean;
+		/** If the shortcut does a task (e.g. closes the window). */
+		isTask: boolean;
+		/** If the shortcut contains Ctrl. */
+		containsCtrl: boolean;
+		/** If the shortcut contains Alt. */
+		containsAlt: boolean;
+		/** If the shortcut contains Shift. */
+		containsShift: boolean;
+		/** If the shortcut contains a letter (A-Z). */
+		containsLetter: boolean;
+		/** If the shortcut contains a number (0-9). */
+		containsNumber: boolean;
+	};
+};
+
+/**
  * Get a random greeting for the user.
  *
  * If the user is signed in, then the user will get a random greeting, with their username. Sometimes, the function will greet the user depending on their local time (e.g. Good morning!).
@@ -184,6 +397,15 @@ export class User {
 		readonly admin?: boolean,
 		readonly signedOut?: boolean
 	) {}
+	/**
+	 * Change the display name of the user.
+	 *
+	 * If the parameter `newName` passed in isn't a string, a `TypeError` exception will be thrown.
+	 *
+	 * @param newName The new display name of the user.
+	 * @returns The new display name.
+	 */
+	changeDisplayName(newName: string): string;
 	/**
 	 * Validate the email that the user has. This cannot be customized, but we are hoping to implement it soon.
 	 *

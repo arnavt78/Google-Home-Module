@@ -24,12 +24,16 @@
  * Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.
  *
  * This is right now a static variable, which may not be accurate. We are hoping to make a dynamic variable (or function) soon.
+ *
+ * @deprecated
  */
 export const websiteVersion: string;
 /**
  * Get the version of the [Google Home Module](https://www.npmjs.com/package/google-home-module) NPM module.
  *
  * This is right now a static variable, which may not be accurate. We are hoping to make a dynamic variable (or function) soon.
+ *
+ * @deprecated
  */
 export const version: string;
 
@@ -48,7 +52,7 @@ export const version: string;
  * const googleHome = require("google-home-module");
  *
  * const greetOne = googleHome.randomGreeting(true);
- * // => Uncaught TypeError: Parameters 'signedIn' was true while 'username' was false. Expected a value for 'username' while 'signedIn' was true, but got true for 'signedIn' and false for 'username'.
+ * // => TypeError: Parameters 'signedIn' was true while 'username' was false. Expected a value for 'username' while 'signedIn' was true, but got true for 'signedIn' and false for 'username'.
  * //      at randomGreeting (<anonymous>:26:15)
  * //      at <anonymous>:1:1
  *
@@ -61,11 +65,50 @@ export const version: string;
  * // => Welcome!
  * ```
  *
- * @param {boolean} signedIn If the user is signed in or not.
- * @param {string} username The username of the user. If the user does not have an account, you do not have to fill this parameter.
+ * @param signedIn If the user is signed in or not.
+ * @param username The username of the user. If the user does not have an account, you do not have to fill this parameter.
  * @returns The greeting produced randomly.
  */
 export const randomGreeting: (signedIn: boolean, username?: string) => string;
+
+/**
+ * Get the weather data for a specific area.
+ *
+ * Get the weather using a city by specifing the `city` parameter. If there are multiple cities, and the response provides the wrong one, you can fill in `stateCode` and `countryCode`. Howeverm if you provide one value, you must provide the other, otherwise a `TypeError` expection will be thrown.
+ *
+ * Example:
+ * ```js
+ * const googleHome = require("google-home-module");
+ *
+ * googleHome.getWeather("metric", "Melbourne", "VIC");
+ * // => TypeError: Parameter 'stateCode' was true, which 'countryCode' was false. Expected either false or true for both values, but got true and false.
+ * //      at getWeather (<anonymous>:78:9)
+ * //      at <anonymous>:1:1
+ *
+ * googleHome.getWeather("metric", "Melbourne", "VIC", "AUS").then((res) => {
+ * 		console.log(`In ${res.name}, it is ${main.temp.toFixed(1)} degrees Celcius.`);
+ * }).catch((err) => {
+ * 		console.log(err);
+ * });
+ * // => In Melbourne, it is 20.2 degrees Celcius.
+ * ```
+ *
+ * Please note that an error could occur if the city name is wrong, or if the server is down, etc.
+ *
+ * To see the whole object, just `console.log()` the whole response object.
+ *
+ * @param units The units of the returned object with weather data. Must be either _metric_, _imperial_, or _default_ (which is Kelvin).
+ * @param city The city of which you would like to get the weather for.
+ * @param stateCode The state code of the location. This is useful if you would like to get a region which has two or more names. Please note that if you provide this value, but not `countryCode`, a `TypeError` exception will be thrown.
+ * @param countryCode The country code of the location. This is useful if you would like to get a region which has two or more names. Please note that if you provide this value, but not `stateCode`, a `TypeError` exception will be thrown.
+ * @returns A Promise which contains the weather data.
+ */
+export const getWeather: (
+	units: string,
+	city: string,
+	stateCode?: string,
+	countryCode?: string
+) => Promise<object>;
 
 /**
  * Creates a new BasicSearch.

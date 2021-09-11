@@ -20,6 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// Importing modules
+const axios = require("axios").default;
+
+// ! PRIVATE ! //
+const weatherApi = "4d7ad498d3a58ade256b6890f5400bc5";
+
 const websiteVersion = "2.0.0";
 const version = "1.0.0";
 
@@ -63,6 +69,30 @@ const randomGreeting = (signedIn, username = "") => {
 	} else {
 		return "Welcome!";
 	}
+};
+
+const getWeather = async (units, city, stateCode = "", countryCode = "") => {
+	let extraDetails = false;
+
+	if ((!stateCode && countryCode) || (!countryCode && stateCode)) {
+		throw new TypeError(
+			`Parameter 'stateCode' was ${Boolean(stateCode)}, which 'countryCode' was ${Boolean(
+				countryCode
+			)}. Expected either false or true for both values, but got ${Boolean(
+				stateCode
+			)} and ${Boolean(countryCode)}.`
+		);
+	} else if (stateCode && countryCode) {
+		extraDetails = true;
+	}
+
+	return (
+		await axios.get(
+			`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+				`${city},${extraDetails ? `${stateCode},${countryCode}` : ""}`
+			)}&appid=${weatherApi}&units=${units}`
+		)
+	).data;
 };
 
 class BasicSearch {
@@ -199,4 +229,4 @@ class User {
 	}
 }
 
-module.exports = { websiteVersion, version, randomGreeting, BasicSearch, User };
+module.exports = { websiteVersion, version, randomGreeting, getWeather, BasicSearch, User };

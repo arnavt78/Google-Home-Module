@@ -22,9 +22,9 @@
 
 // Importing modules
 const axios = require("axios").default;
+const apiImport = require("../.private/api");
 
-// ! PRIVATE ! //
-const weatherApi = "4d7ad498d3a58ade256b6890f5400bc5";
+const weatherApi = apiImport.weatherApi;
 
 const websiteVersion = "2.0.0";
 const version = "1.0.0";

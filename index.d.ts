@@ -377,7 +377,7 @@ export class BasicSearch {
 	 */
 	search(target: string): { url: string; target: string };
 	/**
-	 * Search for a query using the default browser the user has set on their device. It will, however, still use the preferred search engine.
+	 * Search for a query using the default browser the user has set on their device. It will, however, still use the search engine set.
 	 *
 	 * This method returns a Promise, which contains the URL that was opened. When the task is done, the tab will open with whatever the use searched.
 	 *

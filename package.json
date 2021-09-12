@@ -9,13 +9,12 @@
 	"types": "index.d.ts",
 	"dependencies": {
 		"axios": "^0.21.4",
-		"open": "^8.2.1"
+		"open": "^8.2.1",
+		"is-up": "^4.0.0"
 	},
 	"keywords": [
 		"google",
 		"home",
-		"npm",
-		"package",
 		"arnavcoder",
 		"user",
 		"weather",

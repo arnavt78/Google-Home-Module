@@ -395,6 +395,17 @@ export class BasicSearch {
 	 * @returns A Promise, which has a string (the URL).
 	 */
 	searchQuery(): Promise<string>;
+	/**
+	 * This method can be used for seeing if a a search query is up or not before searching for it.
+	 *
+	 * This method returns a Promise, in which contains a boolean, which states whether or not the search engine was up or not.
+	 *
+	 * The query goes through strict checking before returning a Promise. It checks if the query is a search that is supported by BasicSearch. If it isn't (for example, stackoverflow.com was searched), then a `TypeError` exception was thrown.
+	 *
+	 * @param query The URL that would like to be checked is up. Make sure it is relating to a Google, Bing, or DuckDuckGo search query, or otherwise, a `TypeError` exception will be thrown.
+	 * @returns A Promise, which response is a boolean that represents if the query response was up or not.
+	 */
+	queryResIsUp(query: string): Promise<boolean>;
 }
 
 /**

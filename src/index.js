@@ -22,6 +22,8 @@
 
 const axios = require("axios").default;
 const open = require("open");
+const isUp = require("is-up");
+
 const apiImport = require("../.private/api");
 
 const weatherApi = apiImport.weatherApi;
@@ -264,7 +266,23 @@ class BasicSearch {
 		await open(url);
 		return url;
 	}
+	async queryResIsUp(query) {
+		const google = "https://www.google.com/search?q=";
+		const bing = "https://www.bing.com/search?q=";
+		const duckDuckGo = "https://duckduckgo.com/?q=";
+
+		if (query.includes(google) || query.includes(bing) || query.includes(duckDuckGo)) {
+			return await isUp(query);
+		} else {
+			throw new TypeError(
+				`Parameter 'query' did not contain any query URLs. This method is strictly only to be used for search queries. Expected 'query' containing URL searches, but got ${query}.`
+			);
+		}
+	}
 }
+
+// TODO: Add URLSearch class, and add basic functionality from the BasicSearch class.
+// TODO: Add a method to the URLSearch class which removes the protocol (https://, for example), and also the forward-slash (/) at the end of a URL.
 
 class User {
 	constructor(displayName, email, password, exists = true, admin = false, signedOut = false) {

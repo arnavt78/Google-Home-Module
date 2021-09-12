@@ -41,8 +41,15 @@ googleHome
 // =>  In Melbourne, it is 20.2 degrees Celcius.
 
 const search = new BasicSearch("JavaScript", "Google");
-search.search("_blank");
-// =>  { url: "..."; target: "_blank" }
+search
+	.searchQuery()
+	.then((res) => {
+		console.log(`URL: ${res}`);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
+// =>  URL: https://www.google.com/search?q=JavaScript
 
 const me = new User("Someone", "someone@gmail.com", "password", true, false, false);
 me.validateEmail();
@@ -61,6 +68,7 @@ me.changePassword("password", "mypassword");
 | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `websiteVersion: string`                                                                                                                     | **Deprecated!** Get the website version of the [Google Home](https://arnavthorat78.github.io/Google-Home/) website.       |
 | `version: string`                                                                                                                            | **Deprecated!** Get the version of the [Google Home Module](https://www.npmjs.com/package/google-home-module) NPM module. |
+| `keyboardShortcuts: { openHome: { definition: string, shortcut: string, ...more }, ...more }`                                                | Get all of the keyboard shortcuts and the information from the website!                                                   |
 | `randomGreeting: (signedIn: boolean, username?: string) => string`                                                                           | Get a random greeting for the user.                                                                                       |
 | `getWeather: (units: string, city: string, stateCode?: string, countryCode?: string) => Promise<object>`                                     | Get the weather for your location chosen.                                                                                 |
 | `changeWeatherData: (icon: string, sunrise: number, sunset: number) => { icon: string; dayNight: string; sunrise: string; sunset: string; }` | Change the format of the weather data retrieved with the `getWeather` method.                                             |

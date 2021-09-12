@@ -363,16 +363,38 @@ export class BasicSearch {
 	 */
 	formatQuery(username?: string): string;
 	/**
+	 * **This method is deprecated!** Use `searchQuery` instead.
+	 *
 	 * Search for user's query with the search engine and the user's query.
 	 *
 	 * This method does not actually search, but we are hoping to implement that feature soon.
-	 *
 	 * This method does not guarentee that the search will actually be successful.
 	 *
 	 * @param target The target of the URL. Can be only __blank_, __self_, __parent_ or __top_.
 	 * @returns The object consisting the url and the target.
+	 *
+	 * @deprecated Use `searchQuery` instead.
 	 */
 	search(target: string): { url: string; target: string };
+	/**
+	 * Search for a query using the default browser the user has set on their device. It will, however, still use the preferred search engine.
+	 *
+	 * This method returns a Promise, which contains the URL that was opened. When the task is done, the tab will open with whatever the use searched.
+	 *
+	 * ```js
+	 * const googleHome = require("google-home-module");
+	 *
+	 * const search = new BasicSearch("Google");
+	 * search.searchQuery().then((res) => {
+	 * 		console.log(`URL: ${res}`);
+	 * }).catch((err) => {
+	 * 		console.log(err);
+	 * });
+	 * ```
+	 *
+	 * @returns A Promise, which has a string (the URL).
+	 */
+	searchQuery(): Promise<string>;
 }
 
 /**

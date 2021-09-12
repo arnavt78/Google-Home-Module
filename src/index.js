@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 const axios = require("axios").default;
+const open = require("open");
 const apiImport = require("../.private/api");
 
 const weatherApi = apiImport.weatherApi;
@@ -248,6 +249,20 @@ class BasicSearch {
 				target,
 			};
 		}
+	}
+	async searchQuery() {
+		let url = "";
+
+		if (this.searchEngine == "Bing") {
+			url = `https://www.bing.com/search?q=${encodeURIComponent(this.query)}`;
+		} else if (this.searchEngine == "DuckDuckGo") {
+			url = `https://duckduckgo.com/?q=${encodeURIComponent(this.query)}`;
+		} else {
+			url = `https://www.google.com/search?q=${encodeURIComponent(this.query)}`;
+		}
+
+		await open(url);
+		return url;
 	}
 }
 

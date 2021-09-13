@@ -29,7 +29,7 @@ const apiImport = require("../.private/api");
 const weatherApi = apiImport.weatherApi;
 
 const websiteVersion = "2.1.0";
-const version = "1.1.0";
+const version = "1.1.5";
 
 const keyboardShortcuts = {
 	openHome: {
@@ -281,8 +281,45 @@ class BasicSearch {
 	}
 }
 
-// TODO: Add URLSearch class, and add basic functionality from the BasicSearch class.
-// TODO: Add a method to the URLSearch class which removes the protocol (https://, for example), and also the forward-slash (/) at the end of a URL.
+class URLSearch {
+	constructor(url) {
+		this.url = url;
+	}
+
+	formatUrlQuery(username = "Anonymous") {
+		return `${username} has typed in ${this.url} for the URL.`;
+	}
+	compressUrl(forced = false, length = 0) {
+		if (forced) {
+			return this.url.substr(0, length);
+		} else {
+			let newURL = "";
+
+			if (
+				(this.url.includes("http://") || this.url.includes("https://")) &&
+				!this.url.endsWith("/")
+			) {
+				newURL = this.url.replace(/http:\/\/|https:\/\//g, "");
+			} else if (
+				this.url.endsWith("/") &&
+				(this.url.includes("http://") || this.url.includes("https://"))
+			) {
+				newURL = this.url.replace(/http:\/\/|https:\/\//g, "").slice(0, -1);
+			} else {
+				newURL = this.url;
+			}
+
+			return newURL;
+		}
+	}
+	async openUrl() {
+		await open(this.url);
+		return this.url;
+	}
+	async urlIsUp() {
+		return await isUp(this.url);
+	}
+}
 
 class User {
 	constructor(displayName, email, password, exists = true, admin = false, signedOut = false) {
@@ -409,5 +446,6 @@ module.exports = {
 	getWeather,
 	changeWeatherData,
 	BasicSearch,
+	URLSearch,
 	User,
 };

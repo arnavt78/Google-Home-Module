@@ -24,6 +24,8 @@ It's that easy!
 
 ## Usage
 
+_Quick Note: We are going to soon seperate the code to make it more neat!_
+
 ```js
 const googleHome = require("google-home-module");
 
@@ -73,4 +75,5 @@ me.changePassword("password", "mypassword");
 | `getWeather: (units: string, city: string, stateCode?: string, countryCode?: string) => Promise<object>`                                     | Get the weather for your location chosen.                                                                                 |
 | `changeWeatherData: (icon: string, sunrise: number, sunset: number) => { icon: string; dayNight: string; sunrise: string; sunset: string; }` | Change the format of the weather data retrieved with the `getWeather` method.                                             |
 | `BasicSearch(query: string, searchEngine?: string): BasicSearch`                                                                             | Make a new _BasicSearch_ so the user can search with their desired search engine.                                         |
+| `URLSearch(url: string): URLSearch`                                                                                                          | Make a new _URLSearch_ for a user to use.                                                                                 |
 | `User(displayName: string, email: string, password: string, exists?: boolean, admin?: boolean, signedOut?: boolean): User`                   | Make a new _User_ for a user's account.                                                                                   |

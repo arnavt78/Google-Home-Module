@@ -409,6 +409,51 @@ export class BasicSearch {
 }
 
 /**
+ * Make a new URLSearch.
+ */
+export class URLSearch {
+	/**
+	 * Make a new URLSearch.
+	 *
+	 * @param url The URL that you would like to search.
+	 */
+	constructor(readonly url: string) {}
+
+	/**
+	 * Format the URL query. This is useful for showing to a user.
+	 *
+	 * @param username The username of the user. Defaults to _Anonymous_.
+	 * @returns The formatted query.
+	 */
+	formatUrlQuery(username?: string): string;
+	/**
+	 * Compress the URL slightly.
+	 *
+	 * This method removes the _http://_ and _https://_ protocols, and also removes the forward slash (/) at the end of the URL.
+	 * However, if `forced` is true, then it will make the url the length specified in the `length` parameter.
+	 *
+	 * **`forced` is not recommended!** Why? Because, it will compress the URL by the length, and will make the URL not work, since it will cut out the URL.
+	 *
+	 * @param forced **Not recommended!** Set forced to be true or false.
+	 * @param length The length of how much to cut the URL. Only needed if using `forced`.
+	 * @returns The compressed URL.
+	 */
+	compressUrl(forced?: boolean, length?: number): string;
+	/**
+	 * Open the URL in the user's default browser.
+	 *
+	 * @returns A Promise, which contains the URL which was opened.
+	 */
+	openUrl(): Promise<string>;
+	/**
+	 * Check if the URL is up.
+	 *
+	 * @returns A Promise, which contains whether or not the website is up.
+	 */
+	urlIsUp(): Promise<boolean>;
+}
+
+/**
  * Create a new User.
  */
 export class User {

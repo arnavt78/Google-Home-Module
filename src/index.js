@@ -321,6 +321,46 @@ class URLSearch {
 	}
 }
 
+class SmartSearch {
+	constructor(command) {
+		this.command = command;
+	}
+
+	allCommands() {
+		const commands = [
+			["hello", "hi"],
+			["how are you", "hows everything"],
+			["music", "audio"],
+			["time", "clock"],
+			["picture", "photo", "collage"],
+			["name", "me", "my"],
+		];
+
+		return commands;
+	}
+	cleanCommand(
+		trim = true,
+		lowerCase = true,
+		multipleSpaceToSingle = true,
+		removeSymbols = true
+	) {
+		if (trim) {
+			this.command = this.command.trim();
+		}
+		if (lowerCase) {
+			this.command = this.command.toLowerCase();
+		}
+		if (multipleSpaceToSingle) {
+			this.command = this.command.replace(/\s{2,}/g, " ");
+		}
+		if (removeSymbols) {
+			this.command = this.command.replace(/[!"#$%&'()*+,-.\\/:;<=>?@[\]^_`{|}~]/g, "");
+		}
+
+		return this.command;
+	}
+}
+
 class User {
 	constructor(displayName, email, password, exists = true, admin = false, signedOut = false) {
 		this.displayName = displayName;
@@ -447,5 +487,6 @@ module.exports = {
 	changeWeatherData,
 	BasicSearch,
 	URLSearch,
+	SmartSearch,
 	User,
 };

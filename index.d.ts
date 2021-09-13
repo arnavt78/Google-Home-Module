@@ -454,6 +454,53 @@ export class URLSearch {
 }
 
 /**
+ * Make a new Smart Search.
+ */
+export class SmartSearch {
+	/**
+	 * Make a new Smart Search.
+	 *
+	 * @param command The command of the user.
+	 */
+	constructor(readonly command: string) {}
+
+	/**
+	 * Get all of the commands that are available.
+	 *
+	 * @returns An array of arrays of strings.
+	 */
+	allCommands(): string[][];
+	/**
+	 * Clean the command. This is useful for making the command match with the pattern of the array that `allCommands` has.
+	 *
+	 * It is recommended to leave all the parameters as `true`. However, if wanted, the parameters could also be `false` so that the method will not preform that action.
+	 * However, if possible, leave all as `true`, since the array of strings returned by `allCommands` matches with what this method does.
+	 *
+	 * ```js
+	 * const googleHome = require("google-home-module");
+	 *
+	 * const smart = new SmartSearch("   How  are you?  ");
+	 * smart.command;
+	 * // =>    How  are you?
+	 * smart.cleanCommand();
+	 * // => how are you
+	 * ```
+	 *
+	 * @param trim Whether or not to trim the whitespace of the command.
+	 * @param lowerCase Whether or not to convert the command to lowercase.
+	 * @param multipleSpaceToSingle Whether or not to convert multiple spaces to single spaces.
+	 * @param removeSymbols Whether or not to remove all of the punctuation in the command.
+	 * @returns The new command.
+	 */
+	cleanCommand(
+		trim?: boolean,
+		lowerCase?: boolean,
+		multipleSpaceToSingle?: boolean,
+		removeSymbols?: boolean
+	): string;
+}
+
+/**
  * Create a new User.
  */
 export class User {

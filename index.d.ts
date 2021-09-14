@@ -498,6 +498,37 @@ export class SmartSearch {
 		multipleSpaceToSingle?: boolean,
 		removeSymbols?: boolean
 	): string;
+
+	/**
+	 * Get the time. This command is one of the Smart commands.
+	 *
+	 * The command is, if you get the array from `allCommands`, at the positions below.
+	 *
+	 * ```js
+	 * const googleHome = require("google-home-module");
+	 *
+	 * const smart = new SmartSearch("time");
+	 * smart.allCommands()[3][0];
+	 * smart.allCommands()[3][1];
+	 * ```
+	 *
+	 * If you want to make the time repeating, you can easily use the `setInterval` method.
+	 *
+	 * ```js
+	 * const googleHome = require("google-home-module");
+	 *
+	 * const smart = new SmartSearch("clock");
+	 * setInterval(() => {
+	 * 		smart.timeCommand();
+	 * }, 1000);
+	 * // => 12 : 13 : 45
+	 * //    12 : 13 : 46
+	 * //    ...more
+	 * ```
+	 *
+	 * @returns The time (in a form of 12 : 13 : 45).
+	 */
+	timeCommand(): string;
 }
 
 /**

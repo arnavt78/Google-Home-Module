@@ -359,6 +359,24 @@ class SmartSearch {
 
 		return this.command;
 	}
+
+	timeCommand() {
+		const formatAMPM = (date) => {
+			let hours = date.getHours();
+			let minutes = date.getMinutes();
+			let seconds = date.getSeconds();
+			let ampm = hours >= 12 ? "PM" : "AM";
+			hours = hours % 12;
+			hours = hours ? hours : 12;
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			let strTime = `${hours} : ${minutes} : ${seconds} ${ampm}`;
+			return strTime;
+		};
+
+		const now = new Date();
+
+		return formatAMPM(now);
+	}
 }
 
 class User {

@@ -1,7 +1,7 @@
 # Google Home Module
 
 ![npm](https://img.shields.io/npm/v/google-home-module?color=red&label=npm&logo=version&logoColor=grey)
-![npm](https://img.shields.io/npm/dt/google-home-module?color=red&label=downloads&logo=downloads&logoColor=grey)
+![npm](https://img.shields.io/npm/dt/google-home-module?color=green&label=downloads&logo=downloads&logoColor=grey)
 
 [//]: # (To change the frequency of the downloads in the second Shield, find '.../npm/*dt*/...' in the URL, and replace 'dt' with 'dw', 'dm', 'dy', or 'dt'.)
 

@@ -512,7 +512,7 @@ export class SmartSearch {
 	 * smart.allCommands()[3][1];
 	 * ```
 	 *
-	 * If you want to make the time repeating, you can easily use the `setInterval` method.
+	 * If you want to make the time repeating, you can use the `setInterval` method.
 	 *
 	 * ```js
 	 * const googleHome = require("google-home-module");
@@ -526,7 +526,7 @@ export class SmartSearch {
 	 * //    ...more
 	 * ```
 	 *
-	 * @returns The time (in a form of 12 : 13 : 45).
+	 * @returns The time (in a form of H : M : S).
 	 */
 	timeCommand(): string;
 }

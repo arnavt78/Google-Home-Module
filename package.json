@@ -4,7 +4,7 @@
 	"description": "This module is for doing all the things the Google Home website can do!",
 	"license": "MIT",
 	"repository": "arnavthorat78/Google-Home-Module",
-	"homepage": "https://arnavthorat78.github.io/Google-Home/developer.html",
+	"homepage": "https://arnavthorat78.github.io/Google-Home/",
 	"main": "./src/index.js",
 	"types": "index.d.ts",
 	"dependencies": {

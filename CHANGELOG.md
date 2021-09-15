@@ -4,7 +4,11 @@ This markdown file lists all of the update changes.
 
 ## v1.1.5
 
-Please wait... this version is still pending!
+In this update, we realeased...
+
+-   The `URLSearch` class.
+-   The `SmartSearch` class (not many methods).
+-   The `keyboardShortcuts` object.
 
 ## v1.1.0
 

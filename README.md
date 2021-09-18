@@ -3,7 +3,10 @@
 <img src="https://arnavthorat78.github.io/Google-Home/img/Google.png" alt="Logo" width="100" height="100" />
 
 ![npm](https://img.shields.io/npm/v/google-home-module?color=red&label=npm&logo=version&logoColor=grey)
-![npm](https://img.shields.io/npm/dt/google-home-module?color=green&label=downloads&logo=downloads&logoColor=grey)
+![npm](https://img.shields.io/npm/dt/google-home-module?color=orange&label=downloads&logo=downloads&logoColor=grey)
+[![install size](https://packagephobia.now.sh/badge?p=axios)](https://packagephobia.now.sh/result?p=axios)
+![Lines of code](https://img.shields.io/tokei/lines/github/arnavthorat78/Google-Home-Module?color=blue&label=total%20lines&logo=downloads&logoColor=grey)
+![Website](https://img.shields.io/website?down_color=red&down_message=offline&label=website%20status&logo=status&up_color=green&up_message=online&url=https%3A%2F%2Farnavthorat78.github.io%2FGoogle-Home%2F)
 
 [//]: # "To change the frequency of the downloads in the second Shield, find '.../npm/*dt*/...' in the URL, and replace 'dt' with 'dw', 'dm', 'dy', or 'dt'."
 

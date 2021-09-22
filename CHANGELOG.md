@@ -2,6 +2,12 @@
 
 This markdown file lists all of the update changes.
 
+## v1.2.0
+
+In this version, we simply did...
+
+-   Added the [coding-help](https://www.npmjs.com/package/coding-help) NPM module!
+
 ## v1.1.5
 
 In this update, we realeased...

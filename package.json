@@ -8,6 +8,7 @@
 	"main": "./src/index.js",
 	"types": "index.d.ts",
 	"dependencies": {
+		"coding-help": "^1.2.0",
 		"axios": "^0.21.4",
 		"open": "^8.2.1",
 		"is-up": "^4.0.0"
